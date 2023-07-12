@@ -1,0 +1,32 @@
+﻿@model RamdomStringDemo1.Models.ViewModels.ShortLinkViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <form asp-controller="Home" asp-action="Index">
+
+        <div class="Input-group mb-3">
+            <input class="form-control" asp-for="Url"/>
+            <button class="btn btn-primary">Generate Short link</button>
+        </div>
+
+        <div class="Input-group mb-3">
+            <input class="form-control" asp-for="ShortLink" />
+            <button onclick="CopyText()" class="btn btn-primary">Copy</button>
+        </div>
+
+
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        function CopyText(){
+            var text = document.getElementById('ShortLink');
+
+            navigator.clipboard.writeText(text.value);
+        }
+    </script>
+}
